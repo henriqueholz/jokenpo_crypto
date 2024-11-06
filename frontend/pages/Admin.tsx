@@ -44,41 +44,39 @@ function Admin() {
     }
 
     return (
-        <div className="container">
+        <div className="container mx-auto px-4">
             <Header />
             <main>
                 <div className="py-5 text-center">
-                    <img className="d-block mx-auto mb-4" src="/logo512.png" alt="JoKenPo" width="72" />
-                    <h2>Administrative Panel</h2>
-                    <p className="lead">Change the players' bid, your commission and upgrade the contract.</p>
-                    <p className="lead text-danger">{message}</p>
+                    <img className="block mx-auto mb-4" src="/logo512.png" alt="JoKenPo" width="72" />
+                    <h2 className="text-2xl font-bold">Administrative Panel</h2>
+                    <p className="lead text-lg">Change the players' bid, your commission and upgrade the contract.</p>
+                    <p className="lead text-red-600">{message}</p>
                 </div>
-                <div className="col-md-8 col-lg-12">
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <label htmlFor='bid' className='form-label'>Bid (wei):</label>
-                            <div className='input-group'>
-                                <input type="number" className="form-control" id="bid" value={dashboard?.bid || ""} onChange={onInputChange} />
-                                <span className='input-group-text bg-secondary'>wei</span>
-                                <button type='button' className='btn btn-primary d-inline-flex align-items-center' onClick={onChangeBidClick}>Change Bid</button>
+                <div className="md:w-4/5 lg:w-full mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <label htmlFor='bid' className='block text-sm font-medium'>Bid (wei):</label>
+                            <div className='flex'>
+                                <input type="number" className="form-input flex-1" id="bid" value={dashboard?.bid || ""} onChange={onInputChange} />
+                                <span className='flex items-center px-3 bg-gray-200'>wei</span>
+                                <button type='button' className='btn btn-primary ml-2 inline-flex items-center px-4 py-2 bg-blue-500 text-white' onClick={onChangeBidClick}>Change Bid</button>
                             </div>
                         </div>
-                        <div className="col-sm-6">
-                            <label htmlFor='commission' className='form-label'>Commission (%):</label>
-                            <div className='input-group'>
-                                <input type="number" className="form-control" id="commission" value={dashboard?.commission || ""} onChange={onInputChange} />
-                                <span className='input-group-text bg-secondary'>%</span>
-                                <button type='button' className='btn btn-primary d-inline-flex align-items-center' onClick={onChangeCommissionClick}>Change Commission</button>
+                        <div className="space-y-2">
+                            <label htmlFor='commission' className='block text-sm font-medium'>Commission (%):</label>
+                            <div className='flex'>
+                                <input type="number" className="form-input flex-1" id="commission" value={dashboard?.commission || ""} onChange={onInputChange} />
+                                <span className='flex items-center px-3 bg-gray-200'>%</span>
+                                <button type='button' className='btn btn-primary ml-2 inline-flex items-center px-4 py-2 bg-blue-500 text-white' onClick={onChangeCommissionClick}>Change Commission</button>
                             </div>
                         </div>
                     </div>
-                    <div className="row py-5">
-                        <div className='col-sm-12'>
-                            <label htmlFor='address' className='form-label'>New Contract (address):</label>
-                            <div className='input-group'>
-                                <input type="text" className="form-control" id="address" value={dashboard?.address || ""} onChange={onInputChange} />
-                                <button type='button' className='btn btn-primary d-inline-flex align-items-center' onClick={onUpgradeClick}>Upgrade Contract</button>
-                            </div>
+                    <div className="mt-8 space-y-2">
+                        <label htmlFor='address' className='block text-sm font-medium'>New Contract (address):</label>
+                        <div className='flex'>
+                            <input type="text" className="form-input flex-1" id="address" value={dashboard?.address || ""} onChange={onInputChange} />
+                            <button type='button' className='btn btn-primary ml-2 inline-flex items-center px-4 py-2 bg-blue-500 text-white' onClick={onUpgradeClick}>Upgrade Contract</button>
                         </div>
                     </div>
                 </div>

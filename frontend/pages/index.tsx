@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Admin from './Admin';
 import App from './App';
 
-export default function Home() {
+const Home: React.FC = () => {
+
   const [isAuth, setIsAuth] = useState(null);
 
   useEffect(() => {
@@ -16,4 +16,7 @@ export default function Home() {
   } else {
     return <App />
   }
-}
+};
+
+export default Home;
+

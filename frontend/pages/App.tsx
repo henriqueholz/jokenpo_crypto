@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Leaderboard, Options, play, getLeaderboard, listenEvent, getBestPlayers } from '../services/Web3Service';
 import Header from '../components/Header';
+import Image from 'next/image';
 
 function App() {
 
@@ -26,69 +27,69 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div className="container mx-auto px-4">
       <Header />
       <main>
         <div className="py-5 text-center">
-          <img className="d-block mx-auto mb-4" src="/logo512.png" alt="JoKenPo" width="72" />
-          <h2>Leaderboard</h2>
-          <p className="lead">Check the best players' score and play the game.</p>
-          <p className="lead text-danger">{message}</p>
+          <img className="block mx-auto mb-4" src="/logo512.png" alt="JoKenPo" width="72" />
+          <h2 className="text-2xl font-bold">Leaderboard</h2>
+          <p className="text-lg">Check the best players' score and play the game.</p>
+          <p className="text-red-600">{message}</p>
         </div>
-        <div className='col-md-8 col-lg-12'>
-          <div className='row'>
-            <div className='col-sm-6'>
-              <h4 className='mb-3'>Best Players</h4>
-              <div className='card card-body border-0 shadow table-wrapper table-responsive'>
-                <table className='table table-hover'>
+        <div className='w-full lg:w-3/4 mx-auto'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+            <div>
+              <h4 className='mb-3 text-xl font-semibold'>Best Players</h4>
+              <div className='bg-white p-4 shadow rounded'>
+                <table className='w-full table-auto text-left'>
                   <thead>
                     <tr>
-                      <th className='border-gray-200'>Player</th>
-                      <th className='border-gray-200'>Wins</th>
+                      <th className='border-b-2 border-gray-200 py-2'>Player</th>
+                      <th className='border-b-2 border-gray-200 py-2'>Wins</th>
                     </tr>
                   </thead>
                   <tbody>
                     {
                       leaderboard && leaderboard.players && leaderboard.players.length
-                        ? leaderboard.players.map(p => (<tr key={p.wallet}><td>{p.wallet}</td><td>{p.wins.toString()}</td></tr>))
-                        : <tr><td colSpan={2}>Loading...</td></tr>
+                        ? leaderboard.players.map(p => (<tr key={p.wallet}><td className='py-2'>{p.wallet}</td><td className='py-2'>{p.wins.toString()}</td></tr>))
+                        : <tr><td colSpan={2} className='py-2'>Loading...</td></tr>
                     }
                   </tbody>
                 </table>
               </div>
             </div>
-            <div className='col-sm-6'>
-              <h4 className='mb-3'>Games</h4>
-              <div className='card card-body border-0 shadow'>
-                <h5 className='mb-3 text-primary'>Current Status:</h5>
-                <div className='alert alert-success'>
+            <div>
+              <h4 className='mb-3 text-xl font-semibold'>Games</h4>
+              <div className='bg-white p-4 shadow rounded'>
+                <h5 className='mb-3 text-blue-500'>Current Status:</h5>
+                <div className='bg-green-100 text-green-800 p-3 rounded'>
                   {
                     leaderboard && leaderboard.result
                       ? leaderboard.result
                       : "Loading..."
                   }
                 </div>
-                <h5 className='mb-3 text-primary'>
+                <h5 className='mb-3 text-blue-500'>
                   {
                     leaderboard && leaderboard.result?.indexOf("won") !== -1 || !leaderboard?.result
                       ? "Start a new game:"
                       : "Play this game:"
                   }
                 </h5>
-                <div className='d-flex'>
-                  <div className='col-sm-4'>
-                    <div className='alert alert-info me-3 play-button' onClick={() => onPlay(Options.PAPER)}>
-                      <img src="/assets/paper.png" width={100} alt="Paper" />
+                <div className='flex gap-3'>
+                  <div className='w-1/3'>
+                    <div className='bg-blue-200 p-3 cursor-pointer' onClick={() => onPlay(Options.PAPER)}>
+                      <Image src="/paper.png" width={100} height={100} alt="Paper" className='block mx-auto' />
                     </div>
                   </div>
-                  <div className='col-sm-4'>
-                    <div className='alert alert-info play-button' onClick={() => onPlay(Options.ROCK)}>
-                      <img src="/assets/rock.png" width={100} alt="Rock" />
+                  <div className='w-1/3'>
+                    <div className='bg-blue-200 p-3 cursor-pointer' onClick={() => onPlay(Options.ROCK)}>
+                      <Image src="/rock.png" width={100} height={100} alt="Rock" className='block mx-auto' />
                     </div>
                   </div>
-                  <div className='col-sm-4'>
-                    <div className='alert alert-info ms-3 play-button' onClick={() => onPlay(Options.SCISSORS)}>
-                      <img src="/assets/scissors.png" width={100} alt="Scissors" />
+                  <div className='w-1/3'>
+                    <div className='bg-blue-200 p-3 cursor-pointer' onClick={() => onPlay(Options.SCISSORS)}>
+                      <Image src="/scissors.png" width={100} height={100} alt="Scissors" className='block mx-auto' />
                     </div>
                   </div>
                 </div>
