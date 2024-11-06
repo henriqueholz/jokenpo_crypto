@@ -1,0 +1,16 @@
+{
+  "name": "hardhat-project",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx hardhat node",
+    "test": "npx hardhat test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.15"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "dotenv": "^16.4.5"
+  }
+}
