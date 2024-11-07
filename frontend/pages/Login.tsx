@@ -46,7 +46,7 @@ function Login() {
                 <p className="text-lg mb-4">Play Rock-Paper-Scissors and earn prizes.</p>
                 <p>
                     <a href="#" onClick={onBtnClick} className="inline-flex items-center justify-center px-4 py-2 text-lg font-bold text-white bg-blue-500 hover:bg-blue-600 rounded focus:outline-none">
-                        <img src="/assets/metamask.svg" alt="MetaMask logo" width="48" className="mr-3"/>
+                        <img src="/metamask.svg" alt="MetaMask logo" width="48" className="mr-3"/>
                         Log in with MetaMask
                     </a>
                 </p>

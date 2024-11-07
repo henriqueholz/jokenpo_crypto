@@ -3,7 +3,10 @@
   "license": "MIT",
   "scripts": {
     "start": "npx hardhat node",
-    "test": "npx hardhat test"
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.ts --network local",
+    "console": "npx hardhat console"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
